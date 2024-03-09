@@ -1,5 +1,34 @@
 {
-  "version": 1,
+  "version": 3,
   "status": "fail",
-  "message": "TODO: replace with correct output"
+  "tests": [
+    {
+      "name": "not_divisible_by_4",
+      "status": "fail",
+      "message": "Result for 2015 is: 1, but should be: 0"
+    },
+    {
+      "name": "divisible_by_2_not_divisible_by_4",
+      "status": "fail",
+      "message": "Result for 1970 is: 1, but should be: 0"
+    },
+    {
+      "name": "divisible_by_4_not_divisible_by_100",
+      "status": "fail",
+      "message": "Result for 1996 is: 0, but should be: 1"
+    },
+    {
+      "name": "divisible_by_100_not_divisible_by_400",
+      "status": "pass"
+    },
+    {
+      "name": "divisible_by_400",
+      "status": "fail",
+      "message": "Result for 2000 is: 0, but should be: 1"
+    },
+    {
+      "name": "divisible_by_200_not_divisible_by_400",
+      "status": "pass"
+    }
+  ]
 }

@@ -1,0 +1,36 @@
+{
+  "version": 3,
+  "status": "fail",
+  "tests": [
+    {
+      "name": "not_divisible_by_4",
+      "status": "fail",
+      "message": "Result for 2015 is: 1, but should be: 0",
+      "output": "| year | is_leap |\n|------|---------|\n| 1800 | 0       |\n| 1970 | 1       |\n| 1996 | 1       |\n| 2000 | 0       |\n| 2015 | 1       |\n| 2100 | 0       |"
+    },
+    {
+      "name": "divisible_by_2_not_divisible_by_4",
+      "status": "fail",
+      "message": "Result for 1970 is: 1, but should be: 0",
+      "output": "| year | is_leap |\n|------|---------|\n| 1800 | 0       |\n| 1970 | 1       |\n| 1996 | 1       |\n| 2000 | 0       |\n| 2015 | 1       |\n| 2100 | 0       |"
+    },
+    {
+      "name": "divisible_by_4_not_divisible_by_100",
+      "status": "pass"
+    },
+    {
+      "name": "divisible_by_100_not_divisible_by_400",
+      "status": "pass"
+    },
+    {
+      "name": "divisible_by_400",
+      "status": "fail",
+      "message": "Result for 2000 is: 0, but should be: 1",
+      "output": "| year | is_leap |\n|------|---------|\n| 1800 | 0       |\n| 1970 | 1       |\n| 1996 | 1       |\n| 2000 | 0       |\n| 2015 | 1       |\n| 2100 | 0       |"
+    },
+    {
+      "name": "divisible_by_200_not_divisible_by_400",
+      "status": "pass"
+    }
+  ]
+}
