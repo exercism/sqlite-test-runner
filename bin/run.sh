@@ -33,7 +33,7 @@ echo "${slug}: testing..."
 
 # Run the tests for the provided implementation file and redirect stdout and
 # stderr to capture it
-cd "${solution_dir}"
+cd "${solution_dir}" || exit
 echo "${solution_dir}"
 test_output=$(sqlite3 -bail < "./${slug}_test.sql" 2>&1)
 
@@ -42,8 +42,12 @@ test_output=$(sqlite3 -bail < "./${slug}_test.sql" 2>&1)
 if [ $? -ne 0 ]; then
     jq -n --arg output "${test_output}" '{version: 3, status: "error", message: $output}' > ${results_file}
 else
-    if [[ -f "user_output.md" && $(cat "user_output.md" | wc -c) -gt 0 ]]; then
-        test_result=$(jq "(.[] | select(.status == \"fail\")).output |=  \"$(cat user_output.md)\" " < output.json)
+    if [[ -f "user_output.md" ] && [ -s "user_output.md" ]]; then
+        test_result=$(
+            jq --arg uo "$(< user_output.md)" '
+                (.[] | select(.status == "fail")).output |= $uo
+            ' output.json
+        )
     else
         test_result=$(cat output.json)
     fi

@@ -31,13 +31,13 @@ INSERT INTO tests (name, uuid, year, result)
 
 UPDATE tests
 SET status = 'pass'
-FROM (SELECT year, is_leap FROM leap) AS l
-WHERE (l.year, l.is_leap) = (tests.year, tests.result);
+FROM (SELECT year, is_leap FROM leap) AS actual
+WHERE (actual.year, actual.is_leap) = (tests.year, tests.result);
 
 UPDATE tests
-SET message = 'Result for ' || l.year || ' is: ' || l.is_leap || ', but should be: ' || tests.result
-FROM (SELECT year, is_leap FROM leap) AS l
-WHERE l.year = tests.year AND tests.status = 'fail';
+SET message = 'Result for ' || actual.year || ' is: ' || actual.is_leap || ', but should be: ' || tests.result
+FROM (SELECT year, is_leap FROM leap) AS actual
+WHERE actual.year = tests.year AND tests.status = 'fail';
 
 .mode json
 .once './output.json'
