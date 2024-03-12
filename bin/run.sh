@@ -16,7 +16,7 @@
 # ./bin/run.sh two-fer path/to/solution/folder/ path/to/output/directory/
 
 # If any required arguments is missing, print the usage and exit
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+if [ "$#" -ne 3 ]; then
     echo "usage: ./bin/run.sh exercise-slug path/to/solution/folder/ path/to/output/directory/"
     exit 1
 fi
@@ -42,7 +42,7 @@ test_output=$(sqlite3 -bail < "./${slug}_test.sql" 2>&1)
 if [ $? -ne 0 ]; then
     jq -n --arg output "${test_output}" '{version: 3, status: "error", message: $output}' > ${results_file}
 else
-    if [[ -s "user_output.md" ]]; then
+    if [ -s "user_output.md" ]; then
         test_result=$(
             jq --arg uo "$(cat user_output.md)" '
                 (.[] | select(.status == "fail")).output |= $uo
