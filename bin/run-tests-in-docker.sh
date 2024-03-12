@@ -16,7 +16,7 @@
 set -e
 
 # Build the Docker image
-docker build --rm -t exercism/test-runner .
+docker build --rm -t exercism/test-runner . --no-cache
 
 # Run the Docker image using the settings mimicking the production environment
 docker run \

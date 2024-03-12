@@ -1,7 +1,6 @@
 FROM alpine:3.18
 
-# install packages required to run the tests
-RUN apk add --no-cache jq coreutils
+RUN apk add --no-cache jq sqlite coreutils
 
 WORKDIR /opt/test-runner
 COPY . .

@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 3,
   "status": "error",
-  "message": "TODO: replace with correct output"
+  "message": "Parse error near line 1: near \"WH22aEasd233\": syntax error\n  UPDATE leap SET is_leap = 1 WH22aEasd233/&%34  SELECT * FROM leap;\n                error here ---^"
 }

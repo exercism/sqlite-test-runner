@@ -10,7 +10,6 @@
 
 # Example:
 # ./bin/run-tests.sh
-
 exit_code=0
 
 # Iterate over all test directories
